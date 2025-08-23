@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -10,16 +10,22 @@ class HomePage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/menu_bg.jpg"),
-          fit: BoxFit.fill,
-        ),
+        gradient: LinearGradient(colors: [
+
+          ...List.generate(2, (_) => Colors.lightGreen),
+          ...List.generate(4, (_) => Colors.yellow),
+          ...List.generate(8, (_) => Colors.white),
+
+          ...List.generate(8, (_) => Colors.white),
+          ...List.generate(4, (_) => Colors.yellow),
+          ...List.generate(2, (_) => Colors.lightGreen),
+        ]),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // menu text
-          const Spacer(flex: 2),
+          const Spacer(flex: 1),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +46,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
 
-          const Spacer(),
+          const Spacer(flex: 2),
           SizedBox(
             width: double.infinity,
             child: Text(
@@ -53,53 +59,27 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          const Spacer(),
+          const Spacer(flex: 2),
 
-          SizedBox(
-            height: 100,
-            child: const VideoPlayerWidget(),
+          Lottie.asset(
+            'assets/swipe_lottie.json',
+            height: 80,
           ),
-          const Spacer(flex: 3),
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              "Swipe to find the Best",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const Spacer(),
         ],
       ),
     );
-  }
-}
-
-class VideoPlayerWidget extends StatefulWidget {
-  const VideoPlayerWidget({super.key});
-
-  @override
-  State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
-}
-
-class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.asset("assets/intro_animation.mp4")
-      ..initialize().then((value) {
-        setState(() {});
-        _controller.setLooping(true);
-        _controller.play();
-      });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: _controller.value.isInitialized
-          ? AspectRatio(aspectRatio: 16/9, child: VideoPlayer(_controller))
-          : const SizedBox(),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

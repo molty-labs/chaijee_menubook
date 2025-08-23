@@ -81,8 +81,8 @@ class RateAndSharePage extends StatelessWidget {
                               final size = MediaQuery.of(context).size;
 
                               Share.share(
-                                "Chai Jee and Waffle Jee Modinagar",
-                                subject: "https://www.instagram.com/chaijee_modinagar/",
+                                "Chai Jee and Waffle Jee Modinagar: https://www.instagram.com/chaijee_modinagar/",
+                                subject: "",
                                 sharePositionOrigin: context.isIPad
                                     ? Rect.fromLTWH(0, 0, size.width, size.height/2)
                                     : null,
