@@ -3,7 +3,10 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # The branch to trigger the action
+      - master
+
+permissions:
+  contents: write # Add this line
 
 jobs:
   build-and-deploy:
@@ -17,5 +20,5 @@ jobs:
       - run: flutter build web --release --base-href="/chaijee_menubook/"
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # The branch the action should deploy to
+          branch: gh-pages
           folder: build/web
