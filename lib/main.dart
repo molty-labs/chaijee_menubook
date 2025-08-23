@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_menu/menu_item/menu_items.dart';
 import 'package:my_menu/util/pair.dart';
 import 'package:my_menu/widgets/category_wrapper_widget.dart';
@@ -7,18 +8,28 @@ import 'package:my_menu/widgets/home_page.dart';
 import 'package:my_menu/widgets/rate_and_share_page.dart';
 import 'package:my_menu/widgets/single_category_item_list.dart';
 import 'package:page_flip/page_flip.dart';
-
 import 'widgets/menu_page.dart';
 
-void main() => runApp(const MenuApp());
+void main() => runApp(MenuApp());
 
 class MenuApp extends StatelessWidget {
-  const MenuApp({super.key});
+
+  MenuApp({super.key});
+
+  final _router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const MenuFlipBook(),
+      ),
+    ],
+  );
+
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) => MaterialApp.router(
     debugShowCheckedModeBanner: false,
+    routerConfig: _router,
     title: 'Menu Flipbook',
-    home: const MenuFlipBook(),
   );
 }
 

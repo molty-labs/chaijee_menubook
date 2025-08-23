@@ -1,0 +1,21 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # The branch to trigger the action
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter build web --release --base-href="/chaijee_menubook/"
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to
+          folder: build/web
