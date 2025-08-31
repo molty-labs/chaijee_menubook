@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class CategoryWrapperWidget extends StatelessWidget {
 
-  final String title;
+  final String title, description;
   final Widget childWidget;
 
   const CategoryWrapperWidget({
     super.key,
     required this.title,
-    this.childWidget = const Center(child: Text("Coming Soon")),
+    this.childWidget  = const Center(child: Text("Coming Soon")),
+    this.description  = '',
   });
 
   @override
@@ -76,6 +77,30 @@ class CategoryWrapperWidget extends StatelessWidget {
               ],
             ),
           ),
+
+          // desc text
+          if (description.isNotEmpty) ...[
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              decoration: BoxDecoration(
+                color: Colors.white70,
+                border: Border(
+                  left: BorderSide(color: Colors.black, width: 1),
+                  right: BorderSide(color: Colors.black, width: 1),
+                ),
+              ),
+              child: Text(
+                description,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 8,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ],
 
           // menu items
           Container(

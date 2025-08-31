@@ -85,4 +85,20 @@ class MenuItems {
     "BUTTER FRY"              : "60",
     "VEGGIE CHEESE"           : "90",
   };
+
+  /// page 3 content
+
+  static const Map<String, String> waffleItems = {
+    "Chocolate Truffle ( Dark / White )"            : "100",
+    "Crunchy Butterscotch"                          : "100",
+    "Blueberry White Chocolate"                     : "110",
+    "Hazelnut Chocolate"                            : "110",
+    "Coffee Chocolate"                              : "110",
+    "Lotus Biscoff Truffle"                         : "120",
+  };
+
+  static const Map<String, String> pancakesItems = {
+    "Double Chocolate Banana"                       : "100",
+    "Blueberry Chocolate"                           : "110",
+  };
 }

@@ -107,6 +107,23 @@ class _MenuFlipBookState extends State<MenuFlipBook> {
             childWidget: SingleCategoryItemList(items: MenuItems.maggieItems),
           ),
         ]),
+
+        // 3rd page
+        MenuPage(
+          items: [
+            CategoryWrapperWidget(
+              title: 'Waffle Sandwiches',
+              description: 'Waffle filled with different type of truffles and fruit fillings',
+              childWidget: SingleCategoryItemList(items: MenuItems.waffleItems),
+            ),
+            CategoryWrapperWidget(
+              title: 'Pancakes',
+              description: 'Mini doracakes comes with fruits and chocolate / cream fillings',
+              childWidget: SingleCategoryItemList(items: MenuItems.pancakesItems),
+            ),
+          ],
+          endingNote: "Add on Ice-Cream / Banana @Rs 30 /-",
+        ),
       ],
     ),
   );
